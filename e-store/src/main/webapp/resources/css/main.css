@@ -1,0 +1,80 @@
+body {
+
+	font-family: monospace;
+	font-size: 10pt;
+}
+
+div#wrapDiv
+{
+	min-width: 600px;
+	max-width: 2500px;
+}
+
+div#mainContent
+{
+    padding-left: 3px;
+    padding-right: 3px;
+}
+
+div#mainContent #pageheader
+{
+	height: 150px;
+	background: rgba(237,237,237,1);
+	text-align: center;
+	/* vertical-align: middle; */
+	font-size: 22px;
+}
+
+div#body
+{
+	padding-left: 150px;
+    padding-right: 150px;
+    min-height: 350px;
+    font-family: sans-serif;
+}
+
+#claim
+{
+	text-align: center;
+	font-size: 14px;
+	font-weight: bold;
+}
+
+#claimTable
+{
+	width: 100%;
+}
+
+#claimTable td#tdLeft
+{
+	width: 15%;
+}
+
+#claimTable td#tdRight
+{
+	width: 85%;
+}
+
+div#pagefooter
+{
+	text-align: center;
+}
+
+div#leftSidebar
+{
+    float: left;
+    background-color: blue;
+}
+
+div#rightSidebar
+{
+    float: right;
+    background-color: blue;
+}
+
+div#footerSidebar
+{
+    clear: both;
+    background-color: black;
+}
+
