@@ -22,6 +22,7 @@ private static final String APPLICATION_PROPERTIES = "database.properties";
     private static final String HIBERNATE_DIALECT = "hibernate.dialect";
     private static final String HIBERNATE_SHOW_SQL = "hibernate.show_sql";
     private static final String HIBERNATE_HBM2DDL_AUTO = "hibernate.hbm2ddl.auto";
+    private static final String HIBERNATE_FORMAT_SQL = "hibernate.format_sql";
     
     private static final String DATABASE = "db.name";
     
@@ -38,6 +39,7 @@ private static final String APPLICATION_PROPERTIES = "database.properties";
     private static String hibernateDialect;
     private static String hibernateShowSql;
     private static String hibernateHBM2ddlAuto; 
+    private static String hibernateFormatSql;
     
     private static String database;
     
@@ -64,9 +66,10 @@ private static final String APPLICATION_PROPERTIES = "database.properties";
 				setDbMainUsername( properties.getProperty( DB_MAIN_USERNAME ).trim() );
 				setDbMainPassword( properties.getProperty( DB_MAIN_PASSWORD ).trim() );
 				
-				setHibernateDialect( properties.getProperty( HIBERNATE_DIALECT ) );
-				setHibernateShowSql( properties.getProperty( HIBERNATE_SHOW_SQL ) );
-				setHibernateHBM2ddlAuto( properties.getProperty( HIBERNATE_HBM2DDL_AUTO ) );
+				setHibernateDialect( properties.getProperty( HIBERNATE_DIALECT ).trim() );
+				setHibernateShowSql( properties.getProperty( HIBERNATE_SHOW_SQL ).trim() );
+				setHibernateHBM2ddlAuto( properties.getProperty( HIBERNATE_HBM2DDL_AUTO ).trim() );
+				setHibernateFormatSql( properties.getProperty( HIBERNATE_FORMAT_SQL ).trim() );
 				
 				setDatabase( properties.getProperty( DATABASE ).trim() );
 			} 
@@ -78,7 +81,7 @@ private static final String APPLICATION_PROPERTIES = "database.properties";
     	}
     }
 
-
+    //[start] Getters and seters.
 	public static String getDbAuthDriver() {
 		return dbAuthDriver;
 	}
@@ -197,6 +200,14 @@ private static final String APPLICATION_PROPERTIES = "database.properties";
 	public static void setHibernateHBM2ddlAuto(String hibernateHBM2ddlAuto) {
 		ConfigurationHolder.hibernateHBM2ddlAuto = hibernateHBM2ddlAuto;
 	}
-    
-    
+
+	public static String getHibernateFormatSql() {
+		return hibernateFormatSql;
+	}
+
+	public static void setHibernateFormatSql(String hibernateFormatSql) {
+		ConfigurationHolder.hibernateFormatSql = hibernateFormatSql;
+	}
+    //[end]
+	
 }

@@ -17,8 +17,7 @@ import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
-@EnableTransactionManagement
-@EnableJpaRepositories( basePackages = "com.mystore.jpa.auth.repository", entityManagerFactoryRef = "authEntityManager", transactionManagerRef = "authTransactionManager" )
+@EnableJpaRepositories( basePackages = "com.mystore.jpa.auth.repository", entityManagerFactoryRef = "authEntityManager" )
 @Profile( "postgresql" )
 public class AuthDBPostgresConfig 
 {
@@ -49,14 +48,6 @@ public class AuthDBPostgresConfig
         return dataSource;
 		
     }
-	
-	@Bean
-    public PlatformTransactionManager transactionManager(final EntityManagerFactory emf) 
-	{
-        final JpaTransactionManager transactionManager = new JpaTransactionManager();
-        transactionManager.setEntityManagerFactory(emf);
-        return transactionManager;
-	}
 	   
 	final Properties additionalProperties() 
 	{
@@ -64,6 +55,9 @@ public class AuthDBPostgresConfig
         hibernateProperties.setProperty( "hibernate.show_sql", ConfigurationHolder.getHibernateShowSql() );
         hibernateProperties.setProperty( "hibernate.dialect", ConfigurationHolder.getHibernateDialect() );
         hibernateProperties.setProperty( "hibernate.hbm2ddl.auto" , ConfigurationHolder.getHibernateHBM2ddlAuto() );
+        hibernateProperties.setProperty( "hibernate.format_sql" , ConfigurationHolder.getHibernateFormatSql() );
+        hibernateProperties.setProperty( "hibernate.transaction.jta.platform" , "org.hibernate.service.jta.platform.internal.JBossAppServerJtaPlatform" );
+		hibernateProperties.setProperty( "hibernate.transaction.factory_class", "org.hibernate.transaction.CMTTransactionFactory" );
         return hibernateProperties;
     }
 	

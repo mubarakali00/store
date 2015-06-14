@@ -20,6 +20,7 @@ public class WebAppConfig extends WebMvcConfigurerAdapter {
 	
 	@Bean
 	public UrlBasedViewResolver setupViewResolver() {
+		
 		UrlBasedViewResolver resolver = new UrlBasedViewResolver();
 		resolver.setPrefix("/WEB-INF/views/");
 		resolver.setSuffix(".jsp");
@@ -28,14 +29,15 @@ public class WebAppConfig extends WebMvcConfigurerAdapter {
 	}
 	
 	@Override
-    public void configureMessageConverters(List<HttpMessageConverter<?>> converters) 
-	{
+    public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
+		
         converters.add(new MappingJackson2HttpMessageConverter());
         super.configureMessageConverters(converters);
     }
 	
 	@Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
+		
         registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
     }
 	
